@@ -1,0 +1,1917 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>LIQUIDITY HACKER EA - Advanced Trading Robot</title>
+  <meta content="Automated LIQUIDITY HACKER EA with high win rates" name="description">
+  <meta content="LIQUIDITY, HACKER, EA, automated trading" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/glightbox.min.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
+
+  <style>
+    /* General Styles */
+    :root {
+      --primary-color: #720de6c4;
+      --primary-light: #720de6c4;
+      --primary-dark: #CC0040;
+      --secondary-color: #333;
+      --success-color: #28a745;
+      --success-light: #32d74b;
+      --text-color: #444;
+      --bg-color: #fff;
+      --light-bg: #f8f9fa;
+      --dark-bg: #0a0b1e;
+      --gradient: linear-gradient(135deg, #720de6c4 0%, #720de6c4 100%);
+      --success-gradient: linear-gradient(135deg, #28a745 0%, #32d74b 100%);
+      --shadow: 0 5px 25px rgba(255, 0, 81, 0.2);
+      --success-shadow: 0 5px 25px rgba(40, 167, 69, 0.2);
+    }
+    
+    body {
+      font-family: "Open Sans", sans-serif;
+      color: var(--text-color);
+    }
+    
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    a:hover {
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+    }
+    
+    section {
+      padding: 80px 0;
+      overflow: hidden;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 3px;
+      background: var(--primary-color);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section-title p {
+      margin-bottom: 0;
+      font-size: 18px;
+      color: #777;
+    }
+    
+    /* Header */
+    #header {
+      height: 80px;
+      transition: all 0.5s;
+      z-index: 997;
+      background: var(--dark-bg);
+    }
+    
+    #header.header-scrolled {
+      background: rgba(10, 11, 30, 0.95);
+      height: 60px;
+    }
+    
+    #header .logo h1 {
+      font-size: 28px;
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+      font-weight: 700;
+    }
+    
+    #header .logo h1 a, #header .logo h1 a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    #header .logo h1 a span {
+      color: var(--primary-color);
+    }
+    
+    /* Navigation */
+    .navbar {
+      padding: 0;
+    }
+    
+    .navbar ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+    
+    .navbar li {
+      position: relative;
+    }
+    
+    .navbar a, .navbar a:focus {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0 10px 30px;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: "Montserrat", sans-serif;
+      color: rgba(255, 255, 255, 0.8);
+      transition: 0.3s;
+    }
+    
+    .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+      color: #fff;
+    }
+    
+    .mobile-nav-toggle {
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+      display: none;
+      line-height: 0;
+    }
+    
+    @media (max-width: 991px) {
+      .mobile-nav-toggle {
+        display: block;
+      }
+      .navbar ul {
+        display: none;
+      }
+    }
+    
+    .navbar-mobile {
+      position: fixed;
+      overflow: hidden;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: var(--dark-bg);
+      transition: 0.3s;
+      z-index: 999;
+    }
+    
+    .navbar-mobile .mobile-nav-toggle {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+    
+    .navbar-mobile ul {
+      display: block;
+      position: absolute;
+      top: 55px;
+      right: 15px;
+      bottom: 15px;
+      left: 15px;
+      padding: 10px 0;
+      border-radius: 10px;
+      background-color: #fff;
+      overflow-y: auto;
+      transition: 0.3s;
+    }
+    
+    .navbar-mobile a, .navbar-mobile a:focus {
+      padding: 10px 20px;
+      font-size: 15px;
+      color: var(--secondary-color);
+    }
+    
+    .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
+      color: var(--primary-color);
+    }
+    
+    /* Hero Section */
+    #hero {
+      width: 100%;
+      background: url("assets/img/hero-bg.jpg") top center;
+      background-size: cover;
+      padding: 160px 0 100px 0;
+      position: relative;
+    }
+    
+    #hero:before {
+      content: "";
+      background: linear-gradient(to right, rgba(10, 11, 30, 0.95), rgba(10, 11, 30, 0.6));
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    #hero .container {
+      position: relative;
+    }
+    
+    #hero h1 {
+      margin: 0;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #fff;
+    }
+    
+    #hero h1 span {
+      color: var(--primary-color);
+    }
+    
+    #hero h2 {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 10px 0 0 0;
+      font-size: 24px;
+      font-weight: 400;
+    }
+    
+    #hero .btn-get-started {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 1px;
+      display: inline-block;
+      padding: 14px 40px;
+      border-radius: 50px;
+      transition: 0.5s;
+      color: #fff;
+      background: var(--gradient);
+      box-shadow: var(--shadow);
+      margin-top: 30px;
+      margin-right: 15px;
+    }
+    
+    #hero .btn-get-started:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 0, 81, 0.4);
+    }
+    
+    #hero .btn-signals {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 1px;
+      display: inline-block;
+      padding: 14px 40px;
+      border-radius: 50px;
+      transition: 0.5s;
+      color: #fff;
+      background: var(--success-gradient);
+      box-shadow: var(--success-shadow);
+      margin-top: 30px;
+    }
+    
+    #hero .btn-signals:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(40, 167, 69, 0.4);
+    }
+    
+    #hero .hero-img {
+      animation: up-down 2s ease-in-out infinite alternate-reverse both;
+    }
+    
+    @media (max-width: 991px) {
+      #hero {
+        padding-top: 100px;
+      }
+      
+      #hero .hero-img {
+        text-align: center;
+        margin-top: 40px;
+      }
+      
+      #hero .hero-img img {
+        width: 70%;
+      }
+      
+      #hero h1 {
+        font-size: 32px;
+      }
+      
+      #hero h2 {
+        font-size: 18px;
+      }
+    }
+    
+    @media (max-width: 575px) {
+      #hero .hero-img img {
+        width: 90%;
+      }
+      
+      #hero .btn-get-started,
+      #hero .btn-signals {
+        display: block;
+        margin: 15px auto;
+        text-align: center;
+      }
+    }
+    
+    @keyframes up-down {
+      0% {
+        transform: translateY(10px);
+      }
+      100% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    /* Services Section */
+    .services {
+      background: var(--light-bg);
+    }
+    
+    .service-item {
+      padding: 40px 30px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-item:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .service-item:hover:before {
+      transform: scaleX(1);
+    }
+    
+    .service-item.vip-signals:before {
+      background: var(--success-gradient);
+    }
+    
+    .service-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .service-item .icon {
+      margin-bottom: 25px;
+      font-size: 48px;
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+    
+    .service-item.vip-signals .icon {
+      color: var(--success-color);
+    }
+    
+    .service-item:hover .icon {
+      transform: scale(1.1);
+    }
+    
+    .service-item h4 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    
+    .service-item p {
+      margin-bottom: 25px;
+      color: #777;
+      line-height: 1.6;
+    }
+    
+    .service-item .btn {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 1px;
+      padding: 12px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    
+    .service-item .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+    
+    .service-item .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 0, 81, 0.3);
+    }
+    
+    .service-item .btn-success {
+      background: var(--success-gradient);
+      color: #fff;
+      box-shadow: var(--success-shadow);
+    }
+    
+    .service-item .btn-success:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+    }
+    
+    .vip-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--success-gradient);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 600;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Main Features Section */
+    .main-features {
+      background: var(--light-bg);
+    }
+    
+    .feature-box {
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .feature-box:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+    
+    .feature-box .icon {
+      margin-bottom: 20px;
+      font-size: 36px;
+      color: var(--primary-color);
+    }
+    
+    .feature-box h4 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .feature-box p {
+      margin-bottom: 0;
+      color: #777;
+    }
+    
+    /* Advanced Features Section */
+    .advanced-features {
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #252749 100%);
+      color: white;
+      position: relative;
+    }
+    
+    .advanced-features h2, 
+    .advanced-features .section-title p {
+      color: white;
+    }
+    
+    .advanced-features h2::after {
+      background: white;
+    }
+    
+    .adv-feature-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+    
+    .adv-feature-item .feature-icon {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      font-size: 22px;
+      transition: all 0.3s ease;
+    }
+    
+    .adv-feature-item:hover .feature-icon {
+      transform: scale(1.1);
+      background: white;
+      color: var(--primary-color);
+    }
+    
+    .adv-feature-item .feature-text h4 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    
+    .adv-feature-item .feature-text p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .feature-image {
+      position: relative;
+      padding: 20px;
+    }
+    
+    .feature-image img {
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-image:hover img {
+      transform: scale(1.05);
+    }
+    
+    .feature-image .badge {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      background: var(--primary-color);
+      color: white;
+      font-weight: 700;
+      padding: 10px 15px;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Testimonials Section */
+    .testimonials {
+      background: var(--light-bg);
+    }
+    
+    .testimonial-item {
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .testimonial-item:before {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 30px;
+      background: white;
+      transform-origin: center;
+      transform: rotate(45deg) translateX(-50%);
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .testimonial-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      overflow: hidden;
+      padding: 5px;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .testimonial-img img {
+      width: 100%;
+      border-radius: 50%;
+    }
+    
+    .testimonial-item h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+    
+    .testimonial-item h4 {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 15px;
+      text-align: center;
+      font-weight: 400;
+    }
+    
+    .testimonial-item .quote-icon {
+      color: var(--primary-light);
+      font-size: 24px;
+      margin-bottom: 15px;
+      display: block;
+      text-align: center;
+    }
+    
+    .testimonial-item p {
+      font-style: italic;
+      margin-bottom: 0;
+      text-align: center;
+    }
+    
+    /* Results Gallery */
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .gallery-item img {
+      transition: all 0.4s ease;
+      width: 100%;
+      border-radius: 10px;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-item .gallery-info {
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 3;
+      transition: all 0.3s ease;
+      opacity: 0;
+      padding: 15px;
+    }
+    
+    .gallery-item:hover .gallery-info {
+      opacity: 1;
+      bottom: 0;
+    }
+    
+    .gallery-item .gallery-info h4 {
+      font-size: 18px;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .gallery-item .gallery-info p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0;
+    }
+    
+    .gallery-item:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -10px;
+      height: 140px;
+      transition: all 0.3s ease;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+      opacity: 0;
+      border-radius: 0 0 10px 10px;
+    }
+    
+    .gallery-item:hover:after {
+      opacity: 1;
+      bottom: 0;
+    }
+    
+    .view-more-btn {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .btn-primary {
+      background: var(--gradient);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 0, 81, 0.4);
+      background: var(--gradient);
+    }
+    
+    /* FAQ Section */
+    .faq {
+      background: #fff;
+    }
+    
+    .faq .faq-list {
+      padding: 0;
+    }
+    
+    .faq .faq-list ul {
+      padding: 0;
+      list-style: none;
+    }
+    
+    .faq .faq-list li {
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .faq .faq-list a {
+      display: block;
+      position: relative;
+      font-size: 18px;
+      font-weight: 500;
+      padding-right: 25px;
+      cursor: pointer;
+      color: var(--secondary-color);
+      transition: all 0.3s ease;
+    }
+    
+    .faq .faq-list a:hover {
+      color: var(--primary-color);
+    }
+    
+    .faq .faq-list i {
+      font-size: 24px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    
+    .faq .faq-list p {
+      margin-bottom: 0;
+      padding: 10px 0 0 0;
+      color: #777;
+    }
+    
+    .faq .faq-list .icon-show {
+      display: none;
+    }
+    
+    .faq .faq-list a.collapsed {
+      color: var(--secondary-color);
+    }
+    
+    .faq .faq-list a.collapsed:hover {
+      color: var(--primary-color);
+    }
+    
+    .faq .faq-list a.collapsed .icon-show {
+      display: inline-block;
+    }
+    
+    .faq .faq-list a.collapsed .icon-close {
+      display: none;
+    }
+    
+    /* Contact Section */
+    .contact {
+      background: var(--light-bg);
+    }
+    
+    .contact .info {
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact .info i {
+      font-size: 20px;
+      color: white;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      background: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .contact .info h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--secondary-color);
+    }
+    
+    .contact .info p {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 0;
+    }
+    
+    .contact .info .social-links {
+      margin-top: 20px;
+    }
+    
+    .contact .info .social-links a {
+      font-size: 18px;
+      color: white;
+      margin-right: 10px;
+      width: 36px;
+      height: 36px;
+      background: var(--secondary-color);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .contact .info .social-links a:hover {
+      background: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .contact .contact-form {
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact .contact-form .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .contact .contact-form .form-group label {
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: var(--secondary-color);
+    }
+    
+    .contact .contact-form .form-control {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .contact .contact-form .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(255, 0, 81, 0.25);
+    }
+    
+    .contact .contact-form button[type="submit"] {
+      background: var(--gradient);
+      border: 0;
+      padding: 12px 34px;
+      color: #fff;
+      transition: 0.4s;
+      border-radius: 50px;
+    }
+    
+    .contact .contact-form button[type="submit"]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 0, 81, 0.4);
+    }
+    
+    /* Footer */
+    #footer {
+      background: var(--dark-bg);
+      padding: 30px 0;
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+    }
+    
+    #footer .copyright {
+      margin-bottom: 10px;
+    }
+    
+    #footer .credits {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      visibility: hidden;
+      opacity: 0;
+      right: 15px;
+      bottom: 15px;
+      z-index: 996;
+      background: var(--primary-color);
+      width: 40px;
+      height: 40px;
+      border-radius: 50px;
+      transition: all 0.4s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .back-to-top i {
+      font-size: 24px;
+      color: #fff;
+      line-height: 0;
+    }
+    
+    .back-to-top:hover {
+      background: var(--primary-light);
+      transform: translateY(-5px);
+    }
+    
+    .back-to-top.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    /* Modal */
+    .modal-content {
+      border-radius: 10px;
+      overflow: hidden;
+      border: none;
+    }
+    
+    .modal-header {
+      background: var(--gradient);
+      color: white;
+      border-bottom: none;
+      padding: 20px 30px;
+    }
+    
+    .modal-header.signals-header {
+      background: var(--success-gradient);
+    }
+    
+    .modal-body {
+      padding: 30px;
+    }
+    
+    .modal-footer {
+      border-top: none;
+      padding: 20px 30px;
+    }
+    
+    .btn-close {
+      color: white;
+      opacity: 1;
+      box-shadow: none;
+    }
+    
+    /* Advanced Styling for Channel Cards */
+    .channels-container {
+      margin: 40px 0;
+    }
+    
+    .channel-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 340px;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      margin: 15px;
+      border: 5px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .channel-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    }
+    
+    .channel-icon {
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .channel-icon:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(to top, rgba(255,255,255,0.2), transparent);
+    }
+    
+    .whatsapp-card .channel-icon {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: white;
+    }
+    
+    .telegram-card .channel-icon {
+      background: linear-gradient(135deg, #0088cc 0%, #0056a3 100%);
+      color: white;
+    }
+    
+    .channel-info {
+      padding: 25px;
+      text-align: center;
+    }
+    
+    .channel-info h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .channel-info p {
+      font-size: 15px;
+      margin-bottom: 20px;
+      color: #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    
+    .features span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      margin: 0 8px 8px 8px;
+      color: #444;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 6px 12px;
+      border-radius: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .features span i {
+      margin: 0 5px;
+      font-size: 16px;
+    }
+    
+    .whatsapp-card .features span i {
+      color: #25D366;
+    }
+    
+    .telegram-card .features span i {
+      color: #0088cc;
+    }
+    
+    .join-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 20px auto 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      width: 85%;
+      max-width: 280px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      letter-spacing: 0.5px;
+    }
+    
+    .join-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      z-index: -1;
+      transition: all 0.4s ease;
+    }
+    
+    .join-btn:hover:before {
+      width: 100%;
+    }
+    
+    .join-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    
+    .join-btn span {
+      margin: 0 10px;
+      font-size: 16px;
+    }
+    
+    .whatsapp-btn {
+      background-color: #25D366;
+      color: white;
+    }
+    
+    .whatsapp-btn:before {
+      background-color: #128C7E;
+    }
+    
+    .telegram-btn {
+      background-color: #0088cc;
+      color: white;
+    }
+    
+    .telegram-btn:before {
+      background-color: #0056a3;
+    }
+    
+    .members-count {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 15px;
+      background: rgba(255,255,255,0.6);
+      padding: 8px 15px;
+      border-radius: 30px;
+      display: inline-flex;
+      margin: 0 auto;
+    }
+    
+    .members-count i {
+      margin: 0 8px;
+      font-size: 16px;
+    }
+    
+    .channels-note {
+      font-size: 16px;
+      color: #555;
+      font-style: italic;
+      background: rgba(255,255,255,0.8);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 50px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 767px) {
+      .channel-card {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+    
+    /* Pulse animation for buttons */
+    .join-btn:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.3) 20%, transparent 70%);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transform: scale(10, 10);
+      opacity: 0;
+      transition: transform 0.5s, opacity 1s;
+    }
+    
+    .join-btn:active:after {
+      transform: scale(0, 0);
+      opacity: 0.3;
+      transition: 0s;
+    }
+    
+    /* Additional animations and effects */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .section-title h2 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px 25px;
+      background: linear-gradient(135deg, rgba(0,136,204,0.1), rgba(37,211,102,0.1));
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+    
+    .section-title p {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 8px 20px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 30px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .contact {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact:before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,136,204,0.1) 0%, transparent 70%);
+    }
+    
+    .contact:after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,211,102,0.1) 0%, transparent 70%);
+    }
+    
+    /* Icon animations */
+    .channel-icon i {
+      animation: pulse 3s infinite ease-in-out;
+    }
+    
+    .whatsapp-card .join-btn i:last-child,
+    .telegram-card .join-btn i:last-child {
+      transition: transform 0.3s ease;
+    }
+    
+    .whatsapp-card .join-btn:hover i:last-child,
+    .telegram-card .join-btn:hover i:last-child {
+      transform: translateX(5px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="index.php"><span>LIQUIDITY HACKER</span> EA</a></h1>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#main-features">Features</a></li>
+          <li><a class="nav-link scrollto" href="#advanced-features">Benefits</a></li>
+          <li><a class="nav-link scrollto" href="#testimonials">Results</a></li>
+          <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-lg-6">
+          <div data-aos="fade-up">
+            <h1>Advanced Trading With <span>LIQUIDITY HACKER EA</span> Robot</h1>
+            <h2>Automated trading system with 95%+ verified win rate</h2>
+            <div class="d-flex flex-wrap mt-4">
+              <a data-bs-toggle="modal" data-bs-target="#reg-modal" class="btn-get-started">Get Trading Robot <i class="bi bi-robot ms-2"></i></a>
+              <a data-bs-toggle="modal" data-bs-target="#signals-modal" class="btn-signals">Join VIP Signals <i class="bi bi-star-fill ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="images/output-onlinepngtools.png" class="img-fluid" alt="NASDAQ Trading Robot">
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Our Trading Solutions</h2>
+          <p>Choose Your Path to Financial Success</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item">
+              <div class="icon"><i class="bi bi-robot"></i></div>
+              <h4>LIQUIDITY HACKER EA</h4>
+              <p>Fully automated trading system with 95%+ win rate. Advanced AI algorithms designed specifically for FOREX markets with smart risk management and 24/7 operation.</p>
+              <a data-bs-toggle="modal" data-bs-target="#reg-modal" class="btn btn-primary">Get Trading Robot <i class="bi bi-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item vip-signals">
+              <div class="vip-badge">VIP</div>
+              <div class="icon"><i class="bi bi-broadcast"></i></div>
+              <h4>VIP Forex Signals</h4>
+              <p>Premium forex signals with 95%+ accuracy rate. Get real-time trade alerts, professional market analysis, and join our exclusive VIP community of successful traders.</p>
+              <a data-bs-toggle="modal" data-bs-target="#signals-modal" class="btn btn-success">Join VIP Signals <i class="bi bi-star-fill ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Main Features Section ======= -->
+    <section id="main-features" class="main-features">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Why Choose Our Robot</h2>
+          <p>Advanced Trading Technology</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="150">
+            <div class="feature-box">
+              <div class="icon"><i class="bi bi-robot"></i></div>
+              <h4>Fully Automated</h4>
+              <p>Set it up once and let the robot handle all your trading decisions. No need for constant monitoring or manual intervention.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-box">
+              <div class="icon"><i class="bi bi-graph-up-arrow"></i></div>
+              <h4>95%+ Win Rate</h4>
+              <p>Our proprietary algorithm consistently achieves exceptional success rates in FOREX market conditions.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="450">
+            <div class="feature-box">
+              <div class="icon"><i class="bi bi-shield-check"></i></div>
+              <h4>Smart Risk Management</h4>
+              <p>Advanced stop-loss and take-profit mechanisms protect your capital while maximizing returns.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="feature-box">
+              <div class="icon"><i class="bi bi-lightning-charge"></i></div>
+              <h4>Lightning Fast Execution</h4>
+              <p>Instant trade execution without delay, ensuring you never miss profitable opportunities in fast-moving markets.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="750">
+            <div class="feature-box">
+              <div class="icon"><i class="bi bi-bar-chart"></i></div>
+              <h4>Market Pattern Recognition</h4>
+              <p>Identifies high-probability trading setups based on proven FOREX market patterns and trends.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="900">
+            <div class="feature-box">
+              <div class="icon"><i class="bi bi-clock-history"></i></div>
+              <h4>24/7 Trading</h4>
+              <p>Automatically trades during optimal market hours without your constant supervision and never misses opportunities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Main Features Section -->
+
+    <!-- ======= Advanced Features Section ======= -->
+    <section id="advanced-features" class="advanced-features">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Advanced Trading Features</h2>
+          <p>Designed For Maximum Profitability</p>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <div class="feature-image">
+              <img src="images/output-onlinepngtools.png" class="img-fluid" alt="Advanced Trading">
+              <div class="badge">95% WIN RATE</div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
+            <div class="adv-feature-item">
+              <div class="feature-icon">
+                <i class="bi bi-cpu"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Advanced AI Algorithm</h4>
+                <p>Proprietary machine learning technology continuously analyzes market conditions to find the best trading opportunities.</p>
+              </div>
+            </div>
+
+            <div class="adv-feature-item">
+              <div class="feature-icon">
+                <i class="bi bi-activity"></i>
+              </div>
+              <div class="feature-text">
+                <h4>INDICES-CURRENCIES Specific Strategies</h4>
+                <p>Custom-built trading strategies optimized specifically for FOREX market behavior and volatility patterns.</p>
+              </div>
+            </div>
+
+            <div class="adv-feature-item">
+              <div class="feature-icon">
+                <i class="bi bi-gear"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Customizable Parameters</h4>
+                <p>Adjust risk levels, trading hours, and strategy settings to match your personal trading preferences.</p>
+              </div>
+            </div>
+
+            <div class="adv-feature-item">
+              <div class="feature-icon">
+                <i class="bi bi-graph-up"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Performance Analytics</h4>
+                <p>Detailed reports and statistics to track your robot's performance and optimize your trading strategy.</p>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#reg-modal" class="btn btn-light">Get Access Now <i class="bi bi-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Advanced Features Section -->
+
+    <!-- ======= Testimonials/Results Gallery Section ======= -->
+    <section id="testimonials" class="gallery">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Results</h2>
+          <p>Real Trading Results From Our Clients</p>
+        </div>
+
+        <div class="row g-3">
+                    
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+            <div class="gallery-item">
+              <img src="images/WhatsApp Image 2025-07-06 at 18.24.22_518d9f0c.jpg" class="img-fluid" alt="Trading Result">
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="gallery-item">
+              <img src="images/WhatsApp Image 2025-07-06 at 18.24.23_bce68f90.jpg" class="img-fluid" alt="Trading Result">
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="gallery-item">
+              <img src="images/WhatsApp Image 2025-07-06 at 18.24.23_c7172f6c.jpg" class="img-fluid" alt="Trading Result">
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="gallery-item">
+              <img src="images/WhatsApp Image 2025-07-06 at 18.24.54_f0cc9f30.jpg" class="img-fluid" alt="Trading Result">
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="gallery-item">
+              <img src="images/WhatsApp Image 2025-07-06 at 18.30.07_548f94ae.jpg" class="img-fluid" alt="Trading Result">
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+            <div class="gallery-item">
+              <img src="images/WhatsApp Image 2025-07-06 at 18.57.05_e25827fc.jpg" class="img-fluid" alt="Trading Result">
+            </div>
+          </div>
+          
+                  </div>
+
+        <div class="view-more-btn" data-aos="fade-up" data-aos-delay="600">
+          <a href="https://t.me/+ajiQCLpm67NmNTA0" target="_blank" class="btn btn-primary">
+            <i class="bi bi-telegram me-2"></i>View More Results on Telegram
+          </a>
+        </div>
+      </div>
+    </section><!-- End Testimonials/Results Gallery Section -->
+
+    <!-- ======= FAQ Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Frequently Asked Questions</h2>
+          <p>Common Questions About LIQUIDITY HACKER EA Robot</p>
+        </div>
+
+        <div class="faq-list" data-aos="fade-up">
+          <ul>
+            <li>
+              <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq1">How does the LIQUIDITY HACKER EA Robot work? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+              <div id="faq1" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                  The LIQUIDITY HACKER EA Robot uses advanced algorithms to analyze market movements and identify high-probability trading opportunities in forex market. It automatically places trades with optimized stop-loss and take-profit levels for maximum profitability.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <a data-bs-toggle="collapse" data-bs-target="#faq2" class="collapsed">What brokers are compatible with the robot? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+              <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Our LIQUIDITY HACKER EA Robot is compatible with all major brokers that provide web terminal access. Simply ensure that the symbols you select match those available with your broker for seamless operation PC-MOBILE.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <a data-bs-toggle="collapse" data-bs-target="#faq3" class="collapsed">What's the minimum deposit required? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+              <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  We recommend a minimum deposit of $100 for optimal performance, but the robot can work with as little as $50 if you adjust the lot size and risk parameters accordingly.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <a data-bs-toggle="collapse" data-bs-target="#faq4" class="collapsed">Does the robot work immediately after purchase? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+              <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Once set up, the robot connects to our signal server and waits for high-quality trading opportunities. It doesn't enter trades immediately but monitors the market for the most profitable setups, which ensures high-quality entries.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <a data-bs-toggle="collapse" data-bs-target="#faq5" class="collapsed">How do I install and set up the robot? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+              <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  After purchase, you'll receive detailed installation instructions via email or whatsapp. The setup process is straightforward and typically takes less than 5 minutes. Our support team is also available to assist you throughout the installation process via video call.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section><!-- End FAQ Section -->
+
+   <!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-title text-center" data-aos="fade-up">
+      <h2><i class="bi bi-broadcast"></i> Join Our Groups <i class="bi bi-broadcast"></i></h2>
+      <p><i class="bi bi-graph-up-arrow"></i> Get Real-Time Trading Signals and robot Updates <i class="bi bi-bell-fill"></i></p>
+    </div>
+    
+    <div class="row justify-content-center" data-aos="fade-up">
+      <div class="col-lg-10">
+        <div class="channels-container d-flex flex-wrap justify-content-center gap-4">
+          
+          <!-- WhatsApp Channel Button -->
+          <div class="channel-card whatsapp-card">
+            <div class="channel-icon">
+              <i class="bi bi-whatsapp"></i>
+            </div>
+            <div class="channel-info text-center">
+              <h3><i class="bi bi-whatsapp"></i> WhatsApp Group <i class="bi bi-whatsapp"></i></h3>
+              <p><i class="bi bi-lightning-charge"></i> Join our exclusive WhatsApp Group for instant robot updates and trading signals</p>
+              <div class="features">
+                <span><i class="bi bi-check-circle-fill"></i> Daily Signals <i class="bi bi-activity"></i></span>
+                <span><i class="bi bi-check-circle-fill"></i> Market Analysis <i class="bi bi-bar-chart-fill"></i></span>
+                <span><i class="bi bi-check-circle-fill"></i> Expert Support <i class="bi bi-headset"></i></span>
+              </div>
+              <a href="https://chat.whatsapp.com/J9gtgmAGKFjEtNcxzQAYNI?mode=r_c" class="join-btn whatsapp-btn">
+                <i class="bi bi-whatsapp"></i>
+                <span>Join WhatsApp Group</span>
+                <i class="bi bi-arrow-right-circle-fill"></i>
+              </a>
+              <div class="members-count">
+                <i class="bi bi-people-fill"></i>
+                <span>1.5K+ members</span>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Instagram Button -->
+          <div class="Instagram-card instagram-card">
+            <div class="instagram-icon">
+              <i class="bi bi-instagram"></i>
+            </div>
+            <div class="account-info text-center">
+              <h3><i class="bi bi-instagram"></i> Instagram account <i class="bi bi-instagram"></i></h3>
+              <p><i class="bi bi-rocket"></i> Follow to my instagram account for trading insights</p>
+              <div class="features">
+                <span><i class="bi bi-check-circle-fill"></i> Follow me <i class="bi bi-bell-fill"></i></span>
+                <span><i class="bi bi-check-circle-fill"></i> Exclusive Content <i class="bi bi-gem"></i></span>
+                <span><i class="bi bi-check-circle-fill"></i> Message me <i class="bi bi-people-fill"></i></span>
+              </div>
+              <a href="https://www.instagram.com/easy.nasdaq?igsh=c2x1dnI1bWRpbmsy" class="join-btn instagram-btn">
+                <i class="bi bi-instagram"></i>
+                <span>Follow me</span>
+                <i class="bi bi-arrow-right-circle-fill"></i>
+              </a>
+              <div class="members-count">
+                <i class="bi bi-people-fill"></i>
+                <span>2.7K+ followers</span>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mt-5" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-12 text-center">
+        <p class="channels-note"><i class="bi bi-lightbulb-fill"></i> Join both Groups for complete market coverage and exclusive trading opportunities <i class="bi bi-rocket-takeoff-fill"></i></p>
+      </div>
+    </div>
+  </div>
+</section><!-- End Contact Section -->
+  </main>
+
+  <!-- Trading Robot Registration Modal -->
+  <div class="modal fade" id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title"><i class="bi bi-robot me-2"></i>Get LIQUIDITY HACKER EA Robot</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="text-center mb-4">
+            <div class="icon" style="font-size: 48px; color: var(--primary-color);"><i class="bi bi-robot"></i></div>
+            <p class="text-muted">Start your automated trading journey today</p>
+          </div>
+          <form id="contactForm" action="plans.php" method="GET">
+            <div class="mb-3">
+              <label for="modal-names" class="form-label">Your Full Name</label>
+              <input type="text" class="form-control" id="modal-names" name="names" placeholder="e.g. John Smith" required="">
+            </div>
+            <div class="mb-3">
+              <label for="modal-email" class="form-label">Your Email Address</label>
+              <input type="email" class="form-control" id="modal-email" name="email" placeholder="e.g. john@example.com" required="">
+            </div>
+            <div class="mb-3">
+              <label for="modal-phone" class="form-label">Your Phone Number</label>
+              <input type="tel" class="form-control" id="modal-phone" name="phone" placeholder="e.g. +1234567890" required="">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary w-100">
+                <i class="bi bi-rocket-takeoff me-2"></i>Get Trading Robot Now
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIP Signals Registration Modal -->
+  <div class="modal fade" id="signals-modal" tabindex="-1" aria-labelledby="signals-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header signals-header">
+          <h5 class="modal-title" id="signals-modal-title"><i class="bi bi-star-fill me-2"></i>Join VIP Signals Group</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="text-center mb-4">
+            <div class="icon" style="font-size: 48px; color: var(--success-color);"><i class="bi bi-broadcast"></i></div>
+            <h6 class="fw-bold text-success">VIP EXCLUSIVE ACCESS</h6>
+            <p class="text-muted">Get 95%+ accuracy forex signals and join our premium community</p>
+            <div class="d-flex justify-content-center gap-3 mb-3">
+              <span class="badge bg-success"><i class="bi bi-check-circle-fill me-1"></i>Real-Time Signals</span>
+              <span class="badge bg-success"><i class="bi bi-check-circle-fill me-1"></i>95%+ Accuracy</span>
+              <span class="badge bg-success"><i class="bi bi-check-circle-fill me-1"></i>VIP Community</span>
+            </div>
+          </div>
+          <form id="signalsForm" action="plans.php" method="GET">
+            <input type="hidden" name="service" value="signals">
+            <div class="mb-3">
+              <label for="signals-names" class="form-label">Your Full Name</label>
+              <input type="text" class="form-control" id="signals-names" name="names" placeholder="e.g. John Smith" required="">
+            </div>
+            <div class="mb-3">
+              <label for="signals-email" class="form-label">Your Email Address</label>
+              <input type="email" class="form-control" id="signals-email" name="email" placeholder="e.g. john@example.com" required="">
+            </div>
+            <div class="mb-3">
+              <label for="signals-phone" class="form-label">Your Phone Number</label>
+              <input type="tel" class="form-control" id="signals-phone" name="phone" placeholder="e.g. +1234567890" required="">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success w-100">
+                <i class="bi bi-star-fill me-2"></i>Join VIP Signals Now - R500/Lifetime Access
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        � Copyright <strong><span>easynasdaq</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Trading involves significant risk of loss and may not be suitable for all investors.
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/glightbox.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize AOS animation
+      AOS.init({
+        duration: 1000,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+
+      // Mobile nav toggle
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const navbar = document.querySelector('#navbar');
+
+      if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', function() {
+          navbar.classList.toggle('navbar-mobile');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+
+      // Mobile nav dropdowns activate
+      const navLinks = document.querySelectorAll('.navbar .scrollto');
+      
+      function navbarMobile() {
+        if (window.innerWidth < 991) {
+          document.querySelector('header').classList.add('header-scrolled');
+        } else {
+          document.querySelector('header').classList.remove('header-scrolled');
+        }
+      }
+      
+      window.addEventListener('load', navbarMobile);
+      window.addEventListener('resize', navbarMobile);
+
+      // Scroll to section
+      document.querySelectorAll('.scrollto').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          if (document.querySelector('.navbar-mobile')) {
+            navbar.classList.remove('navbar-mobile');
+            mobileNavToggle.classList.toggle('bi-list');
+            mobileNavToggle.classList.toggle('bi-x');
+          }
+          
+          const targetId = this.getAttribute('href');
+          document.querySelector(targetId).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      // Handle active state on scroll
+      function onScroll() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        let position = window.scrollY + 200;
+        
+        sections.forEach(section => {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          const id = section.getAttribute('id');
+          
+          if (position >= top && position < top + height) {
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+        
+        // Toggle header background on scroll
+        if (window.scrollY > 100) {
+          document.querySelector('header').classList.add('header-scrolled');
+          document.querySelector('.back-to-top').classList.add('active');
+        } else {
+          document.querySelector('header').classList.remove('header-scrolled');
+          document.querySelector('.back-to-top').classList.remove('active');
+        }
+      }
+      
+      window.addEventListener('scroll', onScroll);
+      
+      // Initialize lightbox
+      const lightbox = GLightbox({
+        selector: '.gallery-item img',
+        touchNavigation: true,
+        loop: true,
+        autoplayVideos: true
+      });
+      
+      // Back to top button
+      const backToTop = document.querySelector('.back-to-top');
+      
+      backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+
+</body></html>
